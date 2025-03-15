@@ -1,0 +1,120 @@
+link pascal : https://onlinegdb.com/mspZh3AlE
+result 
+
+si (firstLargest == secondLargest) alors
+    ecrire("There is no second largest number.")
+sinon
+    ecrire("Second largest: ", secondLargest)
+fin si
+
+pour i de 1 à (n - 1) faire
+    si (tb[i] > firstLargest) alors
+        secondLargest = firstLargest
+        firstLargest = tb[i]
+    fin si
+
+    si ( (tb[i] > secondLargest) et (tb[i] <> firstLargest) ) alors
+        secondLargest = tb[i]
+    fin si
+fin pour
+
+firtLargetN := tb[0];
+secondLargetN := tb[0];
+
+// remplir le tableau
+pour i de 0 a (n-1) faire
+       ecrire('TB[ ',i+1,' ] : ')
+       lire(tb[i])
+fin pour
+
+repeter
+       ecrire("GIve the size of the array : ")
+       lire(n)
+jusqua ( n > 1)
+
+
+fin program
+------------------------------------------------------------------------
+T D O
+
+name                 type            role
+n                  integer     contains the size of the array
+i                  integer     counter
+firstLargestN      integer     contains the first largest number
+secondLargestN     integer     contains the second largest number
+tab                tab         contains numbers  
+
+
+type
+
+tab = arry [1..100] of integer 
+
+************************  longestConsecutiveSequence *******************************
+pascal https://onlinegdb.com/IUloxSabi
+
+result 
+si (longestLength < currentLength) alors
+    longestLength = currentLength
+fin si
+
+écrire("Longest sequence length: ", longestLength)
+
+
+pour i de 0 à (n - 2) faire
+    si (tb[i] = (tb[i + 1] - 1)) alors
+        currentLength = currentLength + 1
+    sinon si (longestLength < currentLength) alors
+        longestLength = currentLength
+        currentLength = 1
+    sinon
+        currentLength = 1
+    fin si
+fin pour
+
+longestLength = 1
+currentLength = 1
+
+// Tri du tableau (tri à bulles)
+répéter
+    swapped = faux
+    pour i de 0 à (n - 2) faire
+        si (tb[i] > tb[i + 1]) alors
+            temp = tb[i]
+            tb[i] = tb[i + 1]
+            tb[i + 1] = temp
+            swapped = vrai
+        fin si
+    fin pour
+jusqu'à (swapped = faux)
+
+// Remplissage du tableau
+pour i de 0 à (n - 1) faire
+    écrire("tb[", i + 1, "] :")
+    lire(tb[i])
+fin pour
+
+répéter
+    écrire("Donner la taille du tableau :")
+    lire(n)
+jusqu'à (n > 1)
+
+
+
+
+
+Nom	       Type	Rôle
+tb	       tab	      Tableau contenant les nombres
+n	       integer	Taille du tableau tb
+i	       integer	Compteur 
+currentLength	integer	Longueur de la séquence consécutive actuelle
+longestLength	integer	Longueur de la plus longue séquence consécutive trouvée
+temp	       integer	Variable temporaire 
+swapped	boolean	
+
+type
+
+tab = arry [1..100] of integer 
+
+
+
+
