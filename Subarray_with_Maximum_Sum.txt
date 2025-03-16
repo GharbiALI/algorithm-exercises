@@ -1,0 +1,34 @@
+{pascal link : https://onlinegdb.com/4GXcFEXap}
+program maximum_Sum_Kadanes_Algorithm;
+
+
+var 
+sizeA,i,j,count,max : integer;
+arr : array[0..100] of integer;
+
+begin
+  repeat
+    write('Give the size of the array :');
+    readln(sizeA)
+  until(sizeA > 0);
+  
+  for i := 0 to (sizeA - 1)do
+  begin
+    write('Arr[',i + 1,'] :');
+    read(arr[i]);
+  end;
+  
+  max := arr[0];
+  for i := 0 to (sizeA -1 )do
+  begin
+    count := 0 ;
+    for j := i to (sizeA -1 )do
+    begin
+        count := count + arr[j] ;
+        if count > max then
+            max := count;
+    end;
+  end;
+  write('Max Sum: ',max) ;
+  
+end.
