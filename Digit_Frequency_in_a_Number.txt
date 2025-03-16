@@ -4,7 +4,7 @@ var
     num : longint ; 
     countD: integer ;
     numStr: string ;
-    numFirstDigit : char ; 
+    numFirstDigit: char; 
 begin
 
     repeat
