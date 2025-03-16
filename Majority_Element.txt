@@ -1,0 +1,29 @@
+{link pascal https://onlinegdb.com/O7H7h2Whw}
+program majorityElement;
+
+var 
+sizeA,i : integer;
+arr : array[0..100] of integer;
+
+begin
+  repeat
+    write('Give the size of the array :');
+    readln(sizeA)
+  until(sizeA > 0);
+  
+  for i := 0 to (sizeA - 1)do
+  begin
+    writeln('Arr[',i + 1,'] :');
+    read(arr[i]);
+  end;
+  i := -1;
+ 
+  repeat
+    i := i+1 ;
+  until((i = sizeA) or (arr[i]  > (sizeA div 2 )));
+  if i = sizeA then
+    writeln('There is no number in the list that appears more than',sizeA div 2,'times.')
+  else
+    writeln('Majority element:',arr[i]);
+  
+end.
