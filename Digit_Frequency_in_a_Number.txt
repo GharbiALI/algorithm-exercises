@@ -1,0 +1,34 @@
+{link pascal https://onlinegdb.com/mab05GhNa }
+program digitFrequency;
+var
+    num : longint ; 
+    countD: integer ;
+    numStr: string ;
+    digit : char ;
+begin
+
+    repeat
+    write('give me number :');
+    read(num);
+    until(num > 0);
+    
+    
+    str(num, numStr);
+
+    repeat
+    
+        digit := numStr[1];
+        countD := 0;
+        
+        while(pos(digit,numStr) <> 0) do
+        begin
+            delete(numStr,pos(digit,numStr),1);
+            countD := countD + 1;
+        end;
+        writeln(digit,' : ',countD,' time(s)');
+        
+    until(length(numStr) = 0)
+
+ 
+ 
+end.
