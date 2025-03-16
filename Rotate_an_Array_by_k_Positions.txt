@@ -1,0 +1,44 @@
+{https://onlinegdb.com/gSDpUGygO}
+program Rotate_an_Array_by_k_Positions;
+
+
+var 
+i,j,m,k,sizeA,temp : integer;
+arr : array[0..100] of integer;
+
+begin
+  repeat
+    write('Give the size of the array :');
+    readln(sizeA)
+  until(sizeA > 0);
+  
+  for i := 0 to (sizeA-1)do
+  begin
+    write('Arr[',i + 1,'] :');
+    read(arr[i]);
+  end;
+  repeat
+    write('Give the size of the array :');
+    readln(k);
+  until(k > 0 );
+  
+  j := 0;
+  for i := k+1 to (sizeA-1) do 
+  begin 
+    m := i;
+    repeat
+        temp := arr[m-1];
+        arr[m-1]:=arr[m];
+        arr[m] := temp;
+        m := m-1
+    until(m = j);
+    j := j+1;
+  end;
+  
+  for i := 0 to (sizeA-1)do
+  begin
+    write(arr[i],' ');
+  end;
+  
+  
+end.
