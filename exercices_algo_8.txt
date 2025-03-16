@@ -1,0 +1,128 @@
+result 
+ecrire( " concaténation de taut les voyelles dans le tableau ",ch_result) 
+
+
+// concaténation taut les voyelle
+
+pour i de 0 a ( taille( tb ) - 1 ) faire
+         
+       
+        ch = tb[i]
+
+        pour j de 0 a ( taille( ch ) - 1 ) faire
+         
+           si( pos( majus(ch[i]), ch_voy ) <> - 1  )alors
+           
+                   ch_result = cancat(ch_result,ch[i])
+           fin si      
+                    
+
+        fin pour
+
+fin pour
+
+
+ch_result = ""
+
+// tri de tableau 
+
+
+repeter
+     verif == faux
+     
+     pour i de 0 a ( taille(tb_nb_voy) -1 ) faire
+             si (tb_nb_voy[i] > tb_nb_voy[i+1] alors
+                         v =   tb_nb_voy[i]
+                         tb_nb_voy[i] = tb_nb_voy[i+1]
+                         tb_nb_voy[i+1] = v  
+                         
+                         v = tb[i]
+                         tb[i] = tb[i+1]
+                         tb[i+1]= v 
+                          
+                         verif = vrai
+               finsi 
+   
+     fin pour
+
+jusqua(verif == faux )
+
+tb_nb_voy = nv_tb_nb_voy
+tb = nv_tb
+
+pour i de 0 a (n-1) faire
+	  si ( (tb_nb_voy[i] ) mod 2 <> 0 ) alors
+
+                   nv_tb_nb_voy[nv_taille] = tb_nb_voy[i]
+                   nv_tb[nv_taille] = tb[i] 
+                   nv_taille =  + 1                  
+          fin si
+         
+fin pour
+
+nv_tb_nb_voy = []
+nv_tb = []
+nv_taille = 0
+
+pour i de 0 a (n - 1 ) faire  
+   
+     nb_voy = 0
+     verif_chiff = faux 
+ 
+    repeter
+          
+       ecrire("donner chaine de caractère") 
+       lire(tb[i])
+
+       ch = tb[i]
+       
+      
+       pour j de 0 a ( taille( ch ) - 1 ) faire
+
+                si(  ( pos(ch[j],ch_voy) <> -1 ) faire 
+                        nb_voy = nb_voy + 1  
+                fin si 
+ 
+                si( ( pos(ch[j],ch_chiff ) <> -1 ) faire 
+                        verif_chiff == vraie    
+                fin si      
+                          
+       fin pour
+ 
+
+      jusqua( ( nb_voy <> nb_voy_pr) et ( verif_chiff == faux ) et (taille(ch) > 3) et ( ch <> " " ) ) 
+            
+       
+// remplir tb_nb_voy  par nb  de voyelle de la chaine
+       
+       tb_nb_voy[i] = nb_voy
+
+       nb_voy_pr = nb_voy
+      
+         
+
+fin pour
+
+ch_voy = "AEIOUY"
+ch_chiff ="0123456789"
+nb_voy_pr = 0 
+
+
+
+repeter
+       ecrire("donner la taille de tb ")
+       lire(n)
+
+jusqua ( n > 0)
+
+
+
+
+
+
+
+
+
+
+
+
