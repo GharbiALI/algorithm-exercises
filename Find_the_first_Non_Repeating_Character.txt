@@ -1,0 +1,32 @@
+{https://onlinegdb.com/eJoe9AQgT}
+program Find_the_first_Non_Repeating_Character;
+var
+    str string;
+    i, j, count, firstUniqueIndex integer;
+begin
+    repeat
+        write('Give a string ');
+        readln(str);
+    until (length(str)  3) and (str  '');
+
+    firstUniqueIndex = 0;  
+
+    i = 1;
+    repeat
+        count = 0;
+        for j = 1 to length(str) do
+            if str[i] = str[j] then
+                count = count + 1;
+
+        { If character appears only once, store its index }
+        if (count = 1) and (firstUniqueIndex = 0) then
+            firstUniqueIndex = i;
+
+        i = i + 1;
+    until (i  length(str)) or (firstUniqueIndex  0); 
+
+    if firstUniqueIndex = 0 then
+        writeln('There is no unique character present.')
+    else
+        writeln('First unique character ', str[firstUniqueIndex]);
+end.
