@@ -4,7 +4,7 @@ var
     num : longint ; 
     countD: integer ;
     numStr: string ;
-    digit : char ;
+    numFirstDigit : char ; 
 begin
 
     repeat
@@ -17,15 +17,15 @@ begin
 
     repeat
     
-        digit := numStr[1];
+        numFirstDigit := numStr[1];
         countD := 0;
         
-        while(pos(digit,numStr) <> 0) do
+        while(pos(numFirstDigit,numStr) <> 0) do
         begin
-            delete(numStr,pos(digit,numStr),1);
+            delete(numStr,pos(numFirstDigit,numStr),1);
             countD := countD + 1;
         end;
-        writeln(digit,' : ',countD,' time(s)');
+        writeln(numFirstDigit,' : ',countD,' time(s)');
         
     until(length(numStr) = 0)
 
