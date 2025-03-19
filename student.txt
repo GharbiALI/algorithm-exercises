@@ -64,13 +64,13 @@ Fin Program
 Nom	       | Type      | 	Rôle
 
 NbElevePasse	Entier		Nombre d'élèves ayant dépassé la moyenne générale
-max		Entier		Moyenne la plus élevée parmi les élèves ayant réussi
-min		Entier		Moyenne la plus basse parmi les élèves ayant réussi
+max		    Entier		Moyenne la plus élevée parmi les élèves ayant réussi
+min		    Entier		Moyenne la plus basse parmi les élèves ayant réussi
 tab_pass	Tableau		Tableau contenant les moyennes des élèves ayant réussi
 tab_elv		Tableau		Tableau contenant les moyennes de tous les élèves
-i		Entiers		boucle pour itérer
+i		    Entiers		boucle pour itérer
 n	        Entier		Nombre total d'élèves
 somme_note	Entier		Somme des moyennes des élèves
-moyen	        Entier          Moyenne générale calculée à partir des moyennes des élèves
+moyen	    Entier      Moyenne générale calculée à partir des moyennes des élèves
 max	        Entier		maximum dans le tableau tab_pass 
-min             Entier          manimum dans le tableau tab_pass
+min         Entier          manimum dans le tableau tab_pass
