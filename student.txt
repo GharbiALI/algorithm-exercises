@@ -1,0 +1,76 @@
+resultat : 
+
+// Vérifier s'il y a des élèves ayant dépassé la moyenne
+
+Si (NbElevePasse == 0) alors
+    écrire("Aucun élève n'a dépassé la moyenne générale")
+Sinon
+    max = tab_pass[0]
+    min = tab_pass[0]
+    
+    Pour i de 0 à (NbElevePasse - 1) faire
+        Si (tab_pass[i] > max) alors
+            max = tab_pass[i]
+        Fin Si
+        
+        Si (tab_pass[i] < min) alors
+            min = tab_pass[i]
+        Fin Si
+    Fin Pour
+
+    écrire("La différence est :", abs(max - min))
+    écrire("La moyenne maximum est :", max)
+    écrire("Le nombre d'élèves passés est :", NbElevePasse)
+Fin Si
+
+// Remplir le tableau tab_pass avec les élèves ayant passé
+
+Pour i de 0 à (n - 1) faire
+    Si (moyen < tab_elv[i]) alors
+        tab_pass[NbElevePasse] = tab_elv[i]
+        NbElevePasse = NbElevePasse + 1
+    Fin Si
+Fin Pour
+
+
+NbElevePasse = 0
+
+// Collecter les moyennes des élèves
+
+moyen = somme_note / n
+
+Pour i de 0 à (n - 1) faire
+    répéter
+        écrire("Donner la moyenne de l'élève n ", i + 1)
+        lire(tab_elv[i])
+    Jusqu'à ( ( tab_elv[i] >= 0 ) et ( tab_elv[i] <= 20) ) 
+    somme_note = somme_note + tab_elv[i]
+Fin Pour
+
+somme_note = 0
+
+
+// Demander le nombre d'élèves
+répéter
+    écrire("Donner le nombre d'élèves :")
+    lire(n)
+Jusqu'à (n > 0)
+
+Fin Program
+
+
+
+
+Nom	       | Type      | 	Rôle
+
+NbElevePasse	Entier		Nombre d'élèves ayant dépassé la moyenne générale
+max		Entier		Moyenne la plus élevée parmi les élèves ayant réussi
+min		Entier		Moyenne la plus basse parmi les élèves ayant réussi
+tab_pass	Tableau		Tableau contenant les moyennes des élèves ayant réussi
+tab_elv		Tableau		Tableau contenant les moyennes de tous les élèves
+i		Entiers		boucle pour itérer
+n	        Entier		Nombre total d'élèves
+somme_note	Entier		Somme des moyennes des élèves
+moyen	        Entier          Moyenne générale calculée à partir des moyennes des élèves
+max	        Entier		maximum dans le tableau tab_pass 
+min             Entier          manimum dans le tableau tab_pass
