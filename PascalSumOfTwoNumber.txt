@@ -1,0 +1,20 @@
+program sumOfTwoNumber;
+var
+firstN,secondN,sum: integer;
+
+begin
+  repeat 
+    write('Give the first number : ');
+    read(firstN);
+  until(firstN > 0);
+  
+  repeat 
+    write('Give the second number : ');
+    read(secondN);
+  until(secondN > 0);
+
+  sum  := firstN + secondN ;
+  
+  write('the sum of ',firstN,' + ',secondN,' = ',sum );
+  
+end.
