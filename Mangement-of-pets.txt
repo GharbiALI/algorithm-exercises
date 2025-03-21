@@ -1,5 +1,4 @@
 program ManagementOfPets;
-//uses wincert;
 
 type 
     detailPet = array[0..2] of string;
