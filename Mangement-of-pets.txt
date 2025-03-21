@@ -1,0 +1,65 @@
+program ManagementOfPets;
+
+type 
+    detailPet = array[0..2] of string;
+
+var 
+    i, n, weightP, ageP, err, oldPet, youngAgePet: integer;
+    typeP, namOldPet: string;
+    pets: array[0..100] of detailPet; 
+
+begin
+    repeat
+        write('The number of pets : ');
+        readln(n);
+        
+    until((n > 1) and (n < 101));  
+
+    for i := 0 to n - 1 do
+    begin
+        repeat
+            write('Type of Pet (Dog / Cat) ', i + 1, ': ');
+            readln(typeP);
+            writeln(typeP);
+        until(( UpCase(typeP) = 'DOG') or (UpCase(typeP) = 'CAT'));
+
+        repeat
+            write('Enter the name of pet ', i + 1, ': ');
+            readln(pets[i][0]);
+        until Length(pets[i][0]) > 0;
+
+        repeat
+            write('Enter the age of pet ', i + 1, ': ');
+            readln(pets[i][1]);
+            Val(pets[i][1], ageP, err);
+        until ((err = 0) and (ageP > 0)); 
+
+        repeat
+            write('Enter the weight of pet ', i + 1, ': ');
+            readln(pets[i][2]);
+            Val(pets[i][2], weightP, err);
+        until ((err = 0) and (weightP > 0));
+    end;
+
+    oldPet := 0;
+    youngAgePet := 999;
+    namOldPet := '';
+
+    for i := 0 to n - 1 do 
+    begin 
+        Val(pets[i][1], ageP, err);
+        if (ageP > oldPet) then
+        begin
+            oldPet := ageP;
+            namOldPet := pets[i][0];  
+        end;    
+
+        if (ageP < youngAgePet) then
+        begin
+            youngAgePet := ageP;
+        end;
+    end;
+
+    writeln('The name of the oldest pet is: ', namOldPet);
+    writeln('The age of the youngest pet is: ', youngAgePet);
+end.
