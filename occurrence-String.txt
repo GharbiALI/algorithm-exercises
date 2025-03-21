@@ -1,0 +1,28 @@
+program occurrenceString;
+
+var 
+  st : string;
+  c : char;
+  nbOccurence  : integer;
+begin
+
+    repeat
+        write('Enter a string : ');
+        readln(st);
+    until (( Length(st) > 3) and (st <> '')) ;
+    
+    repeat
+        write('Enter a character : ');
+        readln(c);
+    until (c <> '') ;
+    
+    nbOccurence := 0;
+    while(Pos(UpCase(c),UpCase(st)) <> 0)do 
+    begin
+        Delete(st,Pos(UpCase(c),UpCase(st)),1);
+        nbOccurence := nbOccurence +1 ; 
+    end;
+    
+    write('the  number of occurrence  is :',nbOccurence);
+    
+end.
