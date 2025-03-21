@@ -1,0 +1,111 @@
+program TableauChaines;
+
+
+var
+  n, i, j, k, nbVoy, nbVoy2, nbVoyPre: Integer;
+  isNumber: Boolean;
+  tb: array[0..100] of String;
+  num, voy, allVoyelles, v: String;
+  permut: Boolean;
+
+begin
+
+  num := '1234567890';
+  voy := 'aeiouyAEIOUY';
+
+  repeat
+    Write('Entrer le nombre de chaines : ');
+    Readln(n);
+  until (n > 0);
+
+  // entir data into the array
+  for i := 0 to n - 1 do
+  begin
+    nbVoyPre := -1;
+    
+    repeat
+      
+      Write('Entrer la chaine ', i, ' : ');
+      Readln(tb[i]);
+      
+      nbVoy := 0;
+      isNumber := False;
+
+      for j := 1 to Length(tb[i]) do
+      begin
+        if Pos(tb[i][j], voy) > 0 then
+          nbVoy := nbVoy + 1;
+
+        if Pos(tb[i][j], num) > 0 then
+          isNumber := True;
+      end;
+    until (nbVoy <> nbVoyPre) and (isNumber <> True) and (tb[i] <> '');
+
+    nbVoyPre := nbVoy;
+  end;
+
+  // deletion of strings where the number of vowels is even
+  i := 0;
+  repeat
+    nbVoy := 0;
+    for j := 1 to Length(tb[i]) do
+    begin
+      if Pos(tb[i][j], voy) > 0 then
+        nbVoy := nbVoy + 1;
+    end;
+    
+//deletion of all the vowels if even 
+    if (nbVoy mod 2) = 0 then
+    begin
+      for k := i to n - 2 do
+        tb[k] := tb[k + 1];
+      n := n - 1;
+    end
+    else
+      i := i + 1;
+  until (i = n);
+
+  // sort the array with bulle method
+  repeat
+    permut := False;
+    for i := 0 to n - 2 do
+    begin
+      nbVoy := -1;
+      nbVoy2 := -1;
+
+      for j := 1 to Length(tb[i]) do
+      begin
+        if Pos(tb[i][j], voy) > 0 then
+          nbVoy := nbVoy + 1;
+      end;
+
+      for k := 1 to Length(tb[i + 1]) do
+      begin
+        if Pos(tb[i + 1][k], voy) > 0 then
+          nbVoy2 := nbVoy2 + 1;
+      end;
+
+      if nbVoy > nbVoy2 then
+      begin
+        v := tb[i];
+        tb[i] := tb[i + 1];
+        tb[i + 1] := v;
+        permut := True;
+      end;
+    end;
+  until not permut;
+
+  // concatination all the voyelles in the array
+  allVoyelles := '';
+  
+  for i := 0 to n - 1 do
+  begin
+    for j := 1 to Length(tb[i]) do
+    begin
+      if Pos(tb[i][j], voy) > 0 then
+        allVoyelles := allVoyelles + tb[i][j];
+    end;
+  end;
+
+  Writeln('Les voyelles concaténées sont: ', allVoyelles);
+end.
