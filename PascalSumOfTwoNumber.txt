@@ -1,6 +1,6 @@
 program sumOfTwoNumber;
 var
-firstN,secondN,sum: integer;
+firstN,secondN: integer;
 
 begin
   repeat 
@@ -12,9 +12,7 @@ begin
     write('Give the second number : ');
     read(secondN);
   until(secondN > 0);
-
-  sum  := firstN + secondN ;
   
-  write('the sum of ',firstN,' + ',secondN,' = ',sum );
+  write('the sum of ',firstN,' + ',secondN,' = ',firstN + secondN );
   
 end.
