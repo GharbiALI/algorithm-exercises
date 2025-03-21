@@ -18,7 +18,7 @@ begin
     Readln(n);
   until (n > 0);
 
-  // Remplissage du tableau
+  // entir data into the array
   for i := 0 to n - 1 do
   begin
     nbVoyPre := -1;
@@ -44,7 +44,7 @@ begin
     nbVoyPre := nbVoy;
   end;
 
-  // Suppression des chaînes où le nombre de voyelles est pair
+  // deletion of strings where the number of vowels is even
   i := 0;
   repeat
     nbVoy := 0;
@@ -54,7 +54,7 @@ begin
         nbVoy := nbVoy + 1;
     end;
     
-//Supprimer si le nombre de voyelles est pair
+//deletion of all the vowels if even 
     if (nbVoy mod 2) = 0 then
     begin
       for k := i to n - 2 do
@@ -65,7 +65,7 @@ begin
       i := i + 1;
   until (i = n);
 
-  // Tri du tableau avec tri à bulles 
+  // sort the array with bulle method
   repeat
     permut := False;
     for i := 0 to n - 2 do
@@ -95,7 +95,7 @@ begin
     end;
   until not permut;
 
-  // Concaténation de toutes les voyelles du tableau
+  // concatination all the voyelles in the array
   allVoyelles := '';
   
   for i := 0 to n - 1 do
