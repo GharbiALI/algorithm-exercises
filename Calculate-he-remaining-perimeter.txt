@@ -1,0 +1,49 @@
+program Surface;
+
+
+var 
+surfGlob,surfMais,largSufGl,longSufGl,largM,longM,temp : real;
+i : integer;
+a : string;
+begin
+
+ repeat
+    write('Give the Length total :');
+    readln(longSufGl);
+ until(longSufGl > 0);
+ 
+  repeat
+    write('Give the width total :');
+    readln(largSufGl);
+ until(largSufGl > 0);
+ 
+ surfGlob := longSufGl * largSufGl ;
+ i := 1;   
+ repeat
+    repeat
+        write('Give the Length of the house N',i,' : ');
+        readln(longM);
+    until(longM > 0);
+    
+    repeat
+        write('Give the width of the house N',i,' : ');
+        readln(largM);
+    until(largM > 0);
+    i := i+1;
+    
+    surfMais := largM * longM;
+    
+    
+    if (surfGlob > surfMais) then
+    begin
+        surfGlob := surfGlob - surfMais ;
+        writeln('The remaining perimeter after the construction of the house is : ',surfGlob);
+        writeln('If you want to quit enter < yes > :');
+        readln(a);
+    end    
+    else 
+        writeln('Insufficient space for this house ');
+    
+ until( ( surfGlob <= surfMais) or (UpCase(a) ='YES' ));
+ 
+end.
