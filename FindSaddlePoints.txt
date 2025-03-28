@@ -17,7 +17,9 @@ begin
     for j:= 1 to (n-1)do
     begin
         if (mat[i][j] < smal)then
+        begin
             smal := mat[i][j];
+        end;    
     end;
     smalRow := smal;
 end;
@@ -29,7 +31,9 @@ begin
     for i:= 1 to (n-1)do
     begin
         if (mat[i][j] > larg)then
+        begin
             larg := mat[i][j];
+        end;    
     end;
     largCol := larg;
 end;
