@@ -1,6 +1,4 @@
 program Surface;
-
-
 var 
 surfGlob,surfMais,largSufGl,longSufGl,largM,longM,temp : real;
 i : integer;
