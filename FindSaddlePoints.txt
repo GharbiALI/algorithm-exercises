@@ -73,9 +73,8 @@ begin
         begin
             if((largCol(mat,j,n) = mat[i][j]) and (smalRow(mat,i,n) = mat[i][j]))then
             begin
-                writeln('Saddle point found: ', mat[i][j],' at position (',i,',',j,')');
+                writeln('Saddle point found: ',mat[i][j],' at position (',i,',',j,')');
             end;
-            
         end;
     end;    
 end.
