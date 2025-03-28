@@ -30,10 +30,7 @@ begin
         readln(largM);
     until(largM > 0);
     i := i+1;
-    
     surfMais := largM * longM;
-    
-    
     if (surfGlob > surfMais) then
     begin
         surfGlob := surfGlob - surfMais ;
