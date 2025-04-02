@@ -1,0 +1,55 @@
+//https://onlinegdb.com/kRY1pa3JC
+program numberExistInArray;
+type 
+    arr = array [1..100] of integer;
+var 
+    i,n,nbSur: integer;
+    ar: arr; 
+    
+    function isExist(var ar: arr; n:integer):boolean;
+    var 
+        result: boolean;
+        i: integer;
+    begin
+        result:= False;
+        i:= 1;
+        while((i <= length(arr)) and (result = False))do
+        begin
+            result:= (ar[i] = n );
+            i := i+1;
+        end;
+        isExist := result;
+    end;
+begin
+  //Filling an array 
+  for i := 1 to 20 do
+  begin
+    ar[i] := 1+random(100);
+  end;
+
+  //Search a number in an array
+  nbSur:= 1;
+  while(nbSur <=3 )do
+  begin
+    write('n :');
+    read(n);
+    if(isExist(ar,n))then
+    begin
+        writeln('this number ',n,' exist');
+    end
+    else
+    begin
+        writeln('this number ',n,' does not exist ');
+    end;
+    nbSur:= nbSur+1;
+  end;
+    
+  //Print the array
+  for i := 1 to 20 do
+  begin
+    write(ar[i],' ');
+  end;
+  
+  
+  
+end.
