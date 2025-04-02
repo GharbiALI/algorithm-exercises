@@ -1,0 +1,120 @@
+result
+https://onlinegdb.com/nNx2a3OyG
+
+Si countA > 0 Alors
+        Pour i de 1 à countA Faire
+            Écrire(i, ". ", arr[i].firstN, " ", arr[i].lastN, ", Age: ", arr[i].age, ", Moyenne: ", arr[i].average)
+        Fin Pour
+    Sinon
+        Écrire("Aucun étudiant dans le système.")
+Fin Si
+
+ repeter
+        Écrire("Menu Principal")
+        Écrire("1. Ajouter un étudiant")
+        Écrire("2. Supprimer un étudiant")
+        Écrire("3. Modifier un étudiant")
+        Écrire("Tapez 'exit' pour quitter")
+        Écrire("Votre choix : ")
+        Lire(choice)
+
+        Si minuscules(choice) <> "exit" Alors
+            // Ajouter un nouvel étudiant
+            Si choice = "1" Alors
+                Si countA < sizeA Alors
+                    Écrire("Ajouter un nouvel étudiant")
+                    countA ← countA + 1
+                    arr[countA] ← GetStudentRecord()
+                Sinon 
+                    Écrire("La table est pleine. Impossible d'ajouter plus d'étudiants.")
+                Fin Si
+            
+            // Supprimer un étudiant
+            Sinon Si choice = "2" Alors
+                Si countA = 0 Alors
+                    Écrire("Aucun étudiant à supprimer.")
+                Sinon 
+                    Écrire("Liste des étudiants:")
+                    Pour i de 1 à countA Faire
+                        Écrire(i, ". ", arr[i].firstN, " ", arr[i].lastN, ", Age: ", arr[i].age, ", Moyenne: ", arr[i].average)
+                    Fin Pour
+                    Répéter
+                        Écrire("Entrez le numéro de l'étudiant à supprimer: ")
+                        Lire(studentIndex)
+                    Jusqu'à (studentIndex >= 0) et (studentIndex <= countA)
+                    Pour i de studentIndex à countA - 1 Faire
+                        arr[i] ← arr[i+1]
+                    Fin Pour  
+                    countA ← countA - 1
+                Fin Si
+            // Modifier un étudiant
+            Sinon Si choice = "3" Alors
+                Si countA = 0 Alors
+                    Écrire("Aucun étudiant à modifier.")
+                Sinon  
+                    Écrire("Liste des étudiants:")
+                    Pour i de 1 à countA Faire
+                        Écrire(i, ". ", arr[i].firstN, " ", arr[i].lastN, ", Age: ", arr[i].age, ", Moyenne: ", arr[i].average)
+                    Fin Pour
+                    repeter
+                        Écrire("Entrez le numéro de l'étudiant à modifier : ")
+                        Lire(studentIndex)
+                    Jusqu'à (studentIndex >= 0) et (studentIndex <= countA)
+                    
+                    arr[studentIndex] ← GetStudentRecord()
+                Fin Si
+            Sinon
+                Écrire("Choix invalide. Veuillez réessayer.")
+            Fin Si
+        Fin Si
+    Jusqu'à minuscules(choice) = "exit"
+
+
+countA := 0
+  Répéter
+        Écrire("Entrez la taille du tableau : ")
+        Lire(sizeA)
+  Jusqu'à (sizeA >= 4) et (sizeA <= 20)
+
+
+fin program
+
+------------------fonction-------------------------------------------------------
+Fonction isValidName(name: Chaine): Booleen
+    alph = "AZERTYUIOPMLKJHGFDSQWXCVBN"
+    isValidName = Vrai
+    
+    Si longueur(name) < 3 Alors
+        isValidName ← Faux
+    Sinon
+        Pour i de 1 à longueur(name) Faire
+            Si position(majus(name[i]), alph) = 0 Alors
+                isValidName ← Faux
+            Fin Si
+        Fin Pour
+    Fin Si
+Fin Fonction
+
+Fonction GetStudentRecord(): Etudiant
+    Répéter
+        Écrire("Prénom : ")
+        Lire(etud.firstN)
+    Jusqu'à isValidName(etud.firstN)
+    
+    Répéter
+        Écrire("Nom : ")
+        Lire(etud.lastN)
+    Jusqu'à isValidName(etud.lastN)
+    
+    Répéter
+        Écrire("Âge : ")
+        Lire(etud.age)
+    Jusqu'à (etud.age > 0)
+    
+    Répéter
+        Écrire("Moyenne : ")
+        Lire(etud.average)
+    Jusqu'à ((etud.average >= 0) et (etud.average <= 20))
+    
+    GetStudentRecord etud
+Fin Fonction
