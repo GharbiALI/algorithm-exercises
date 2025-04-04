@@ -13,11 +13,14 @@ var
     begin
         result:= False;
         i:= 1;
-        while((i <= length(arr)) and (result = False))do
-        begin
+
+        repeat
+          begin
             result:= (ar[i] = n );
             i := i+1;
-        end;
+          end;
+        until((result = true) or ((i > length(arr)) ))
+
         isExist := result;
     end;
 begin
@@ -28,8 +31,7 @@ begin
   end;
 
   //Search a number in an array
-  nbSur:= 1;
-  while(nbSur <=3 )do
+  for i := 1 to 3 do
   begin
     write('n :');
     read(n);
@@ -41,7 +43,6 @@ begin
     begin
         writeln('this number ',n,' does not exist ');
     end;
-    nbSur:= nbSur+1;
   end;
     
   //Print the array
