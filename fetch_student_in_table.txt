@@ -1,0 +1,114 @@
+program findStudent;
+
+const
+    Maximum = 100; 
+type
+    student = record 
+       nam: string;
+       lastName: string;
+    end;  
+    arType = array [0..Maximum] of student;
+
+var
+    arr: arType ;
+    numberStudets,i,indexStudent: integer;
+    st: student;
+    resp,nm: string;
+    
+    function isValidSize(m: integer):boolean;
+    var 
+        temp: boolean;
+    begin
+         temp := false;
+         if(( m > 0 ) and ( m < Maximum )) then
+         begin 
+            temp := true;
+         end;
+         isValidSize := temp;
+    end;
+    
+    function isValidString( str: string): boolean;
+    var
+        temp: boolean;
+    begin
+        temp := false;
+        
+        if ( not(str = ' ') and (length(str) >= 3 )) then 
+        begin
+            temp := true;
+        end;
+        
+        isValidString := temp;
+    end; 
+    
+    function existStudent( ar:arType ;nm: string ):integer;
+    var 
+        result,i: integer;
+    begin
+        result := -1 ;
+        i := 0;
+        repeat
+            if   (not( pos(nm, ar[i].nam) = 0 ) or ( not(pos(nm, ar[i].lastName) = 0))) then
+            begin
+                result := i 
+            end;
+            i := i + 1;
+        until( ( i > ( length(arr) - 1) ) or (not(result = 0) )) ;
+        
+        existStudent := result;
+    end;
+        
+   
+    
+begin
+  repeat
+    write('Give the Number of students : ');
+    readln(numberStudets);
+  until (isValidSize(numberStudets)) ;   
+  
+  for i := 0 to  (numberStudets - 1) do 
+  begin
+        repeat
+            write('the name of the student  n',i+1,' : ');
+            readln(st.nam);
+        until ( isValidString(st.nam) );
+        
+        repeat
+            write('the last Name of the student  n',i+1,' : ');
+            readln(st.lastName);
+        until ( isValidString(st.lastName) );
+        
+        arr[i] := st;
+  end;
+  
+ repeat
+ 
+    repeat 
+        write('Give the name or the last name of the student : ');
+        readln(nm);
+    until(isValidString(nm));
+    
+    if ( existStudent(arr,nm) = -1 ) then
+    begin
+        write('Student not found');
+    end
+    else
+    begin
+          indexStudent := existStudent(arr,nm);
+          write(' the Name of the student ',arr[indexStudent].nam,'the last Name of the student ',arr[indexStudent].lastName )     
+          
+    end;
+    
+ 
+    write('Do you want to continue ? write fini to stop : ');
+    readln(resp);
+    
+ until(upcase(resp) = 'FINI');
+    
+   
+
+
+
+
+
+end.
