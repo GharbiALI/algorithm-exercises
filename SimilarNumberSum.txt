@@ -1,0 +1,37 @@
+link Pascal : https://onlinegdb.com/wE-i8VCQV
+
+result
+ecrire("Somme des nombres les plus similaires : ", sum)
+
+
+    Pour i de 1 à n faire
+        currentSum := 0
+        Pour j de i + 1 à n faire
+            Si (arr[j] = arr[i]) alors
+                currentSum := currentSum + arr[j]
+            FinSi
+        FinPour
+
+        currentSum := currentSum + arr[i] 
+
+        Si (currentSum > sum ) alors
+            sum := currentSum
+        FinSi
+    FinPour
+sum := -1
+
+pour i de 0 a n faire 
+    repeter
+        ecrire('arr[',i,']')
+        lire(arr[i])
+    jusqua(( arr[i]mod 2 )=0)
+fin pour
+
+
+repeter
+    ecrire('Give the size of the array')
+    lire(n)
+jusqua(n>0)
+
+
+fin program
