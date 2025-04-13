@@ -1,0 +1,55 @@
+program searshNumberInArray;
+type
+    arr = array[0..10]of integer;
+var 
+    i,sizeOfArray,number,beginElement: integer;
+    ar: arr;
+    
+    function findElement(var ar:arr; number,beginElement: integer):string;
+    var
+        i,j:integer;
+        indexNumber,temp: string;
+    begin
+        temp := 'The element that you search for does not exist ';
+        i:= -1;
+        
+        repeat
+            i := i+1;
+        until (i = length(ar)) or (beginElement = ar[i]);
+        
+        if(beginElement = ar[i])then
+        begin 
+            for j := i to (length(ar) - 1) do
+            begin
+                if(ar[j] = number )then
+                begin
+                    str(j,indexNumber);
+                    temp := 'The index of the element that you search for is '+indexNumber;
+                end;
+            end;
+        end;
+    
+    findElement := temp;
+    end;
+
+begin
+    repeat
+        write('Give the size of the array : ');
+        read(sizeOfArray);
+    until(sizeOfArray > 0);
+    
+    for i := 0 to (sizeOfArray - 1) do 
+    begin
+        write('Give a number for arr[ ', i,' ] :');
+        read(ar[i]);
+    end;
+    
+    write('Give a number you want to search: ');
+    read(number);
+    
+    write('Give the number you want to start search : ');
+    read(beginElement);
+
+    write(findElement(ar,number,beginElement));
+
+end.
