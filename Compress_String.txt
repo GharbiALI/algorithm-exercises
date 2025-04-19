@@ -1,0 +1,39 @@
+link pascal: https://onlinegdb.com/jPLNxq02V
+
+
+result
+
+ecrire('Compressed: ',compressString(Str))
+
+ecrire('Enter a string to compress')
+lire(str)
+
+
+fin program 
+
+
+fonction compressString(s: chaine): chaine
+
+    result := ''
+
+    si (taille(s) = 0) alors
+        compressString := result
+    sinon
+        currentChar := s[1]
+        count := 1
+
+        pour i de 2 à taille(s) faire
+            si (s[i] = currentChar) alors
+                count := count + 1
+            sinon
+                result := result + currentChar + str(count)
+                currentChar := s[i]
+                count := 1
+            finsi
+        finpour
+
+        result := result + currentChar + str(count)
+        compressString := result
+    finsi
+
+fin compressString .
