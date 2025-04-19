@@ -1,0 +1,56 @@
+link pascal : https://onlinegdb.com/mSRc0Ugbu
+
+result
+ecrire(checkAnagrams(firstStr,secondStr))
+
+repeat
+	ecrire('Enter the first String : ');
+        readln(firstStr);
+jusqua(isValidInput(firstStr))
+repeat
+	ecrire('Enter the second String : ');
+        readln(secondStr);
+jusqua(isValidInput(secondStr))
+  
+
+
+
+
+fin program 
+
+function isValidInput(s: chaine):boolean
+
+isValidInput := (taille(s) > 3) and (s <> ' ')
+
+fin isValidInput
+
+----------------------
+
+fonction removeSpace(str: chaine): chaine
+
+    cleanstr := str
+    tantque (pos(' ', cleanstr) <> 0) faire
+        delete(cleanstr, pos(' ', cleanstr), 1)
+    fintantque
+    removeSpace := cleanstr
+fin removeSpace 
+
+-----------------------------------
+fonction checkAnagrams(firstStr, secondStr: chaine): chaine
+
+    temp := 'Yes, they are anagrams'
+    firstStrClean := UpCase(removeSpace(firstStr))
+    secondStrClean := UpCase(removeSpace(secondStr))
+
+    si (taille(firstStrClean) <> taille(secondStrClean)) alors
+        temp := 'No, they are not anagrams.'
+    sinon
+        pour i de 1 à taille(firstStrClean) faire
+            si (pos(firstStrClean[i], secondStrClean) = 0) ou (pos(secondStrClean[i], firstStrClean) = 0) alors
+                temp := 'No, they are not anagrams.'
+            finsi
+        finpour
+    finsi
+
+    checkAnagrams := temp
+fin checkAnagrams 
