@@ -1,0 +1,185 @@
+link pascal: https://onlinegdb.com/ZQPeK9baYb
+
+program MostActiveUser;
+uses 
+    sysUtils;
+type
+  UserLog = record
+    username: string;
+    loginCount: integer;
+    lastLoginDate: string; 
+  end;
+  arrayusers = array[0..2] of UserLog;
+var
+  users: arrayusers;
+{--------functions--------}  
+function CompareDates(date1, date2: string): integer;
+var
+  y1, m1, d1, y2, m2, d2: integer;
+  temp: integer;
+begin
+  y1 := StrToInt(Copy(date1, 1, 4));
+  m1 := StrToInt(Copy(date1, 6, 2));
+  d1 := StrToInt(Copy(date1, 9, 2));
+
+  y2 := StrToInt(Copy(date2, 1, 4));
+  m2 := StrToInt(Copy(date2, 6, 2));
+  d2 := StrToInt(Copy(date2, 9, 2));
+
+  if y1 < y2 then
+  begin
+    temp := -1;
+  end    
+  else if y1 > y2 then
+        begin
+             temp := 1;
+         end
+  else
+  begin
+    
+    if m1 < m2 then
+    begin
+      temp := -1;
+    end  
+    else if m1 > m2 then
+    begin
+      temp := 1;
+    end 
+    else
+    begin
+      
+      if d1 < d2 then
+      begin
+        temp := -1;
+       end    
+      else if d1 > d2 then
+      begin
+        temp := 1;
+      end    
+      else
+      begin
+        temp := 0;
+       end;    
+    end;
+  end;
+  CompareDates := temp;
+end;
+
+function findMostActiveUser(var users: arrayusers; numUsers: integer):string;
+var
+  i, maxIndex: integer;
+  temp: string;
+begin
+  maxIndex := 0;
+  for i := 1 to numUsers - 1 do
+  begin
+    if users[i].loginCount > users[maxIndex].loginCount then
+    begin
+      maxIndex := i;
+    end  
+    else if users[i].loginCount = users[maxIndex].loginCount then
+    begin
+      if CompareDates(users[i].lastLoginDate, users[maxIndex].lastLoginDate) > 0 then
+      begin
+        maxIndex := i;
+      end;    
+    end;
+  end;
+  findMostActiveUser := users[maxIndex].username;
+end;
+
+
+begin
+  users[0].username := 'alice';
+  users[0].loginCount := 12;
+  users[0].lastLoginDate := '2023-04-08';
+
+  users[1].username := 'bob';
+  users[1].loginCount := 12;
+  users[1].lastLoginDate := '2023-03-28';
+
+  users[2].username := 'charlie';
+  users[2].loginCount := 12;
+  users[2].lastLoginDate := '2023-04-05';
+
+  write(FindMostActiveUser(users, 3));
+end.
+-------- algorithm---------
+result
+
+
+ecrire(findMostActiveUser(users, numberOfUsers))
+
+numberIfUsers := 3
+
+  users[0].username := 'alice';
+  users[0].loginCount := 12;
+  users[0].lastLoginDate := '2023-04-08';
+
+  users[1].username := 'bob';
+  users[1].loginCount := 12;
+  users[1].lastLoginDate := '2023-03-28';
+
+  users[2].username := 'charlie';
+  users[2].loginCount := 12;
+  users[2].lastLoginDate := '2023-04-05';
+
+
+fin program 
+
+fonction findMostActiveUser(var users: arrayusers; numUsers: entier): chaîne
+    
+        maxIndex := 0
+        
+        pour i de 1 a numUsers-1 faire
+            si users[i].loginCount > users[maxIndex].loginCount alors
+                maxIndex := i
+            sinon si users[i].loginCount = users[maxIndex].loginCount alors
+                si compareDates(users[i].lastLoginDate, users[maxIndex].lastLoginDate) > 0 alors
+                    maxIndex := i
+                fin si
+            fin si
+        fin pour
+        
+        trouverUtilisateurActif := users[maxIndex].username
+    fin fonction
+
+(--------------------------)
+fonction compareDates(date1, date2: chaine): entier
+    // -1 si date1 < date2
+    // 0 si date1 = date2
+    // 1 si date1 > date2
+    
+
+        y1 := StrToInt(substr(date1, 1, 4))
+        m1 :=StrToInt(subsrt(date1, 6, 2))
+        d1 := StrToInt(substr(date1, 9, 2))
+        
+        // Extraction des composantes de date2
+        y2 := StrToInt(substr(date2, 1, 4))
+        m2 := StrToInt(substr(date2, 6, 2))
+        d2 := StrToInt(substr(date2, 9, 2))
+        
+       
+        si y1 < y2 alors
+            temp := -1
+        sinon si y1 > y2 alors
+            temp := 1
+        sinon
+            si m1 < m2 alors
+                temp := -1
+            sinon si m1 > m2 alors
+                temp ← 1
+            sinon
+                si d1 < d2 alors
+                    temp := -1
+                sinon si d1 > d2 alors
+                    temp := 1
+                sinon
+                    temp := 0
+                fin si
+            fin si
+        fin si
+        
+        compareDates := temp
+    fin fonction
