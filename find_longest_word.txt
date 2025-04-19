@@ -1,0 +1,33 @@
+result
+
+link: https://onlinegdb.com/GJyklQihP
+ecrire('Longest word',findLongestWord(sentence))
+
+ecrire('enter a sentence')
+lire(sentence)
+
+
+
+
+fin program 
+
+fonction findLongestWord(s: chaine): chaine
+
+
+    s := s + ' '   fin de senn
+    word := ''
+    longest := ''
+
+    pour i de 1 a taille(s) faire
+        si (s[i] <> ' ' ) alors
+            word := word + s[i]
+        sinon
+            si taille(word) > taille(longest) alors
+                longest := word
+            finsi
+            word := ''
+        finsi
+    finpour
+
+    FindLongestWord := longest
+fin FindLongestWord 
