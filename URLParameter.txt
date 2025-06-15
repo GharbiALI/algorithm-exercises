@@ -1,0 +1,138 @@
+PASCAL / https://onlinegdb.com/5Msg-qi9LI
+program URLParameter;
+
+var
+    queryStart, queryEnd, ampersandPos,equalPos : integer;
+    queryString,URL, param, val: string;
+begin
+    URL := 'file:///C:/Users/Mercedes_AMG_C63/Documents/html/application-form.html#';
+    queryStart := Pos('?', url);
+    queryEnd := Pos('#', url);
+    
+    if queryStart = 0 then 
+    begin
+        writeln('No parameters found in URL');
+    end
+    else
+    begin
+        queryString := Copy(url, queryStart + 1, queryEnd - queryStart - 1) + '&';
+        writeln(queryString);
+        
+        writeln('------------- URL Parameters : ------------------');
+        while(queryString <> '')do
+        begin 
+            equalPos := Pos('=', queryString);
+            ampersandPos := Pos('&', queryString);
+            
+            param := Copy(queryString, 1, equalPos - 1);
+            val := Copy(queryString, equalPos + 1, ampersandPos - equalPos - 1);
+            if val = '' then
+            begin
+                val := 'null';
+            end;
+            
+            writeln(param,'--> ',val);
+            Delete(queryString, 1, ampersandPos);
+            
+            
+        end;
+        
+        
+    
+    end;
+end.
+
+
+algorithm -------------------
+result 
+
+    si queryStart = 0 alors 
+
+         ecrire('No parameters found in URL')
+    sinon   
+        
+        queryString := souschaine(url, queryStart + 1, queryEnd - queryStart - 1) + '&'
+
+	    tantque(queryString <> '')alors 
+            equalPos := Pos('=', queryString)
+            ampersandPos := Pos('&', queryString)
+            
+            param := souschaine(queryString, 1, equalPos - 1)
+            val := souschaine(queryString, equalPos + 1, ampersandPos - equalPos - 1)
+            si( val = '' )alors
+                val := 'null'
+            fin si 
+            
+            ecrire(param,'--> ',val)
+            efface(queryString, 1, ampersandPos)
+        fin tantque
+    fin si 
+
+    URL := 'file:///C:/Users/Mercedes_AMG_C63/Documents/html/application-form.html#';
+    queryStart := Pos('?', url)
+    queryEnd := Pos('#', url)
+
+
+manuele execution :
+
+URL := 'file:///C:/Users/Mercedes_AMG_C63/Documents/html/application-form.html#'
+
+queryStart := Pos('?', url)  // 0
+    si   queryStart = 0 alors  // True
+        No parameters found in URL
+
+URL :=  'file:///C:/Users/Mercedes_AMG_C63/Documents/html/application-form.html?firstName=ali&lastName=#'
+    queryString := 'firstName=ali&lastName='+ '&'
+    queryString :=  'firstName=ali&lastName=&'
+
+
+    tantque(queryString <> '')alors  // True
+
+        qualPos := Pos('=', queryString)      // 9
+        ampersandPos := Pos('&', queryString) //  13
+
+        param := souschaine(queryString, 1, equalPos - 1)
+                  // souschaine(queryString, 1, 9 - 1) // firstName
+        val := souschaine(queryString, equalPos + 1, ampersandPos - equalPos - 1) 
+                // souschaine(queryString, 9 + 1, 13 - 9 - 1) // ali
+
+         ecrire(param,'--> ',val) // firstName -- > ali
+          efface(queryString, 1, 13)
+
+           queryString :=  'lastName=&'
+
+
+    tantque(queryString <> '')alors  // True
+
+        qualPos := Pos('=', queryString)      // 9
+        ampersandPos := Pos('&', queryString) //  10
+
+        param := souschaine(queryString, 1, equalPos - 1)
+                  // souschaine(queryString, 1, 9 - 1) // lastName
+        val := souschaine(queryString, equalPos + 1, ampersandPos - equalPos - 1) 
+                // souschaine(queryString, 9 + 1, 10 - 9 - 1) // ''
+
+         si( val = '' )alors  // true
+                val := 'null'
+            fin si       
+
+         ecrire(param,'--> ',val) // lastName -- > null
+          efface(queryString, 1, 10)
+
+           queryString :=  '' 
+
+    tantque(queryString <> '')alors   // false
+
+    fin program                   
+
+         
+
+
+
+
+
+
+
+
+
+
